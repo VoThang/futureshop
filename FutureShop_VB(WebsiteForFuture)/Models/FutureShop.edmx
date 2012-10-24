@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FutureEntities.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="FutureEntitiesStoreContainer">
+          <EntitySet Name="MSTDEVICE" EntityType="FutureEntities.Store.MSTDEVICE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MSTDEVKBN" EntityType="FutureEntities.Store.MSTDEVKBN" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MSTDEVTYPE" EntityType="FutureEntities.Store.MSTDEVTYPE" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="MSTDEVICE">
+          <Key>
+            <PropertyRef Name="DEV_MNG_NO" />
+          </Key>
+          <Property Name="DEV_MNG_NO" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DEV_NO" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="DEV_NAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="DEV_IMAGE" Type="varbinary(max)" />
+          <Property Name="PRICE" Type="nvarchar" MaxLength="50" />
+          <Property Name="DEV_TYPE" Type="int" />
+          <Property Name="MODEL" Type="int" />
+          <Property Name="DEV_KBN" Type="int" />
+        </EntityType>
+        <EntityType Name="MSTDEVKBN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="DEVTYPEID" Type="int" Nullable="false" />
+          <Property Name="DEVTYPEKBN" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MSTDEVTYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FutureEntities" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="FutureShop" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MSTDEVICEs" EntityType="FutureEntities.MSTDEVICE" />
+          <EntitySet Name="MSTDEVKBNs" EntityType="FutureEntities.MSTDEVKBN" />
+          <EntitySet Name="MSTDEVTYPEs" EntityType="FutureEntities.MSTDEVTYPE" />
+        </EntityContainer>
+        <EntityType Name="MSTDEVICE">
+          <Key>
+            <PropertyRef Name="DEV_MNG_NO" />
+          </Key>
+          <Property Name="DEV_MNG_NO" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DEV_NO" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="DEV_NAME" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="DEV_IMAGE" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PRICE" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="DEV_TYPE" Type="Int32" />
+          <Property Name="MODEL" Type="Int32" />
+          <Property Name="DEV_KBN" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MSTDEVKBN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="DEVTYPEID" Type="Int32" Nullable="false" />
+          <Property Name="DEVTYPEKBN" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MSTDEVTYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FutureEntitiesStoreContainer" CdmEntityContainer="FutureShop">
+          <EntitySetMapping Name="MSTDEVICEs">
+            <EntityTypeMapping TypeName="FutureEntities.MSTDEVICE">
+              <MappingFragment StoreEntitySet="MSTDEVICE">
+                <ScalarProperty Name="DEV_MNG_NO" ColumnName="DEV_MNG_NO" />
+                <ScalarProperty Name="DEV_NO" ColumnName="DEV_NO" />
+                <ScalarProperty Name="DEV_NAME" ColumnName="DEV_NAME" />
+                <ScalarProperty Name="DEV_IMAGE" ColumnName="DEV_IMAGE" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="DEV_TYPE" ColumnName="DEV_TYPE" />
+                <ScalarProperty Name="MODEL" ColumnName="MODEL" />
+                <ScalarProperty Name="DEV_KBN" ColumnName="DEV_KBN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MSTDEVKBNs">
+            <EntityTypeMapping TypeName="FutureEntities.MSTDEVKBN">
+              <MappingFragment StoreEntitySet="MSTDEVKBN">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="DEVTYPEID" ColumnName="DEVTYPEID" />
+                <ScalarProperty Name="DEVTYPEKBN" ColumnName="DEVTYPEKBN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MSTDEVTYPEs">
+            <EntityTypeMapping TypeName="FutureEntities.MSTDEVTYPE">
+              <MappingFragment StoreEntitySet="MSTDEVTYPE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
